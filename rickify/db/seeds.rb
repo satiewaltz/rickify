@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Picture.delete_all
+Picture.create(url: "imgur.com", user_id: 1)
+Picture.create(url: "reddit.com", user_id: 1)
+Picture.create(url: "npr.org", user_id: 2)
