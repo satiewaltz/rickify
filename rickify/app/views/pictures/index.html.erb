@@ -1,1 +1,12 @@
 <h1>Working</h1>
+<% if(user_signed_in?) %>
+
+<h1>Signed In!</h1>
+<%= user_session %>
+<% @pictures.each do |pic| %>
+
+
+<!-- display the picture, plus some info like date rickified, name etc -->
+
+<% end %>
+<% end %>
