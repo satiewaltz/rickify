@@ -1,0 +1,19 @@
+<h1>Your photo was uploaded sucessfully!</h1>
+<%= cloudinary_js_config %>
+
+<div class="photo">
+    <%= p @picture.url %>
+</div>
+
+<a href="<%= pictures_path %>" class="back_link">Back to list</a>
+
+<% if @upload %>
+  <div class="upload_details">
+    <h2>Upload metadata:</h2>
+    <table>
+      <% @upload.each_pair do |k, v| %>
+        <tr><td><%= k %></td><td><%= v.to_json %></td></tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
