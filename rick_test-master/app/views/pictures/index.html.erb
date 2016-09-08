@@ -10,5 +10,24 @@
 <% @pictures.each do |picture| %>
 <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
 <% end %>
+<canvas id = "myCanvas">
 
+</canvas>
+<script>
 
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var imageObj1 = new Image();
+var imageObj2 = new Image();
+imageObj1.src = "http://res.cloudinary.com/ds1rn0ryl/image/upload/v1473362656/exaqt71uptqglcbfejbe.png"
+imageObj1.onload = function() {
+   ctx.drawImage(imageObj1, 0, 0, 328, 526);
+   imageObj2.src = "http://res.cloudinary.com/ds1rn0ryl/image/upload/v1473361302/bjhqxovkymwplkwqwtgb.png";
+   imageObj2.onload = function() {
+      ctx.drawImage(imageObj2, 15, 85, 300, 300);
+      var img = c.toDataURL("image/png");
+      document.write('<img src="' + img + '" width="328" height="526"/>');
+   }
+};
+
+</script>
