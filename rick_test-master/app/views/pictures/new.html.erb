@@ -114,7 +114,7 @@
       imageObj1.setAttribute('crossOrigin', 'anonymous');
       imageObj2.setAttribute('crossOrigin', 'anonymous');
       imageObj1.src = address
-      if(data.faces[0].features.eyes===undefined){
+      if(data.faces[0].features.eyes[0]===undefined){
         var leftEyeX = data.faces[0].features.nose.x*.3
         var leftEyeY = data.faces[0].features.nose.y*.2
         var rightEyeX = data.faces[0].features.nose.x*2
@@ -122,11 +122,11 @@
         var browWidth = (rightEyeX*.9)-leftEyeX
       }
       else{
-        var leftEyeX = data.faces[0].features.eye[0].x
-        var leftEyeY = data.faces[0].features.eye[0].y
-        var rightEyeX = data.faces[0].features.eye[1].x
-        var rightEyeY = data.faces[0].features.eye[1].y
-        var browWidth = (rightEyeX+data.faces[0].features.eyes[1].width)-leftEyeX
+        var leftEyeX = data.faces[0].features.eyes[1].x
+        var leftEyeY = data.faces[0].features.eyes[1].y
+        var rightEyeX = data.faces[0].features.eyes[0].x
+        var rightEyeY = data.faces[0].features.eyes[0].y
+        var browWidth = (rightEyeX+data.faces[0].features.eyes[0].width)
       }
 
       imageObj1.onload = function() {
