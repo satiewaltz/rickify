@@ -133,8 +133,20 @@
         imageObj2.onload = function() {
           ctx.drawImage(imageObj2, leftEyeX, leftEyeY, browWidth, 100);
           // ctx.drawImage(imageObj2, 350, 250)
-          var img = c.toDataURL("image/png");
-          $('body').append('<img src="' + img + '"/>');
+          $("#myCanvas").addClass('cloudinary-fileupload')
+          $("#myCanvas").cloudinary_fileupload({
+            start: function (e) {
+              $(".status").text("Starting upload...");
+            },
+            progress: function (e, data) {
+              $(".status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
+            },
+            fail: function (e, data) {
+              $(".status").text("Upload failed");
+            }
+          })
+          // var img = c.toDataURL("image/png");
+          // $('body').append('<img src="' + img + '"/>');
           }
         };
        }
