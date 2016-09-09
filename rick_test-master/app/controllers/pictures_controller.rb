@@ -20,6 +20,17 @@ class PicturesController < ApplicationController
 
   def upload
     Picture.create(url: "#{params[:address]}.#{params[:format]}")
-    redirect_to "/"
+  end
+
+  def frs
+    require "httparty"
+    db_url = params[:address]
+    response = HTTParty.get "https://apicloud-facerect.p.mashape.com/process-url.json?features=true&url=#{db_url}",
+    headers:{
+      "X-Mashape-Key" => "cQ44XFRFiemsh1JbW4kP9ltCLibEp1EQ0tCjsnda0ASVCmSYH4",
+      "Accept" => "text/plain"
+    }
+    @coords = response.parsed_response
+    render :json => @coords
   end
 end

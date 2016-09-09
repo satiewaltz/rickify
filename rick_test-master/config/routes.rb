@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :pictures
   post '/pictures/upload', to: 'pictures#upload'
   root to: "pictures#index"
+  get '/frs', to: 'pictures#frs'
 end

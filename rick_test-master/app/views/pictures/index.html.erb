@@ -26,7 +26,8 @@ imageObj1.onload = function() {
    imageObj2.onload = function() {
       ctx.drawImage(imageObj2, 15, 85, 300, 300);
       var img = c.toDataURL("image/png");
-      document.write('<img src="' + img + '" width="328" height="526"/>');
+      img.cloudinary_fileupload()
+      // document.write('<img src="' + img + '" width="328" height="526"/>');
    }
 };
 
