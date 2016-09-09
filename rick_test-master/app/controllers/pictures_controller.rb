@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(url: @url)
-    redirect to: "pictures#index"
+    # redirect_to: "pictures#index"
   end
 
   def upload
