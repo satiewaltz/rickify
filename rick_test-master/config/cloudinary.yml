@@ -1,19 +1,19 @@
 ---
 development:
-  cloud_name: ds1rn0ryl
-  api_key: '791142175615658'
-  api_secret: K_t0_BsWMluePmiT5G7Y760_ldc
+  cloud_name: davebarthly
+  api_key: '837836422587854'
+  api_secret: H-BUxAN-NURYpNJBhMF7HFFGA-o
   enhance_image_tag: true
   static_image_support: false
 production:
-  cloud_name: ds1rn0ryl
-  api_key: '791142175615658'
-  api_secret: K_t0_BsWMluePmiT5G7Y760_ldc
+  cloud_name: davebarthly
+  api_key: '837836422587854'
+  api_secret: H-BUxAN-NURYpNJBhMF7HFFGA-o
   enhance_image_tag: true
   static_image_support: true
 test:
-  cloud_name: ds1rn0ryl
-  api_key: '791142175615658'
-  api_secret: K_t0_BsWMluePmiT5G7Y760_ldc
+  cloud_name: davebarthly
+  api_key: '837836422587854'
+  api_secret: H-BUxAN-NURYpNJBhMF7HFFGA-o
   enhance_image_tag: true
   static_image_support: false

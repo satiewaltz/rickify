@@ -1,14 +1,39 @@
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
-
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
+<h1 class="blink_me unicorn">HTTPARTY HARD</h1>
 
 <% @pictures.each do |picture| %>
 <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
 <% end %>
 
+<style type="text/css" media="screen">
+.unicorn {
+  animation: colorRotate 6s linear 0s infinite,blinker 200ms linear infinite;;
+}
+
+@keyframes colorRotate {
+  from {
+      color: rgb(255, 0, 0);
+  }
+  16.6% {
+      color: rgb(255, 0, 255);
+  }
+  33.3% {
+      color: rgb(0, 0, 255);
+  }
+  50% {
+      color: rgb(0, 255, 255);
+  }
+  66.6% {
+      color: rgb(0, 255, 0);
+  }
+  83.3% {
+      color: rgb(255, 255, 0);
+  }
+  to {
+      color: rgb(255, 0, 0);
+  }
+}
+@keyframes blinker {
+  50% { opacity: 0.0; }
+}
+</style>
 
