@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'materialize-sass'
 gem 'httparty'
 gem 'carrierwave'
 gem 'cloudinary'
