@@ -27,7 +27,7 @@ class PicturesController < ApplicationController
     db_url = params[:address]
     response = HTTParty.get "https://apicloud-facerect.p.mashape.com/process-url.json?features=true&url=#{db_url}",
     headers:{
-      "X-Mashape-Key" => "cQ44XFRFiemsh1JbW4kP9ltCLibEp1EQ0tCjsnda0ASVCmSYH4",
+      "X-Mashape-Key" => "",
       "Accept" => "text/plain"
     }
     @coords = response.parsed_response

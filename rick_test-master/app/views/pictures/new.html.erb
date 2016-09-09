@@ -1,7 +1,6 @@
 <div id="direct_upload">
   <h1>New picture</h1>
   <h2>Direct upload from the browser<% if @unsigned %>. Unsigned upload using a preset<% end %></h2>
-  <p>You can also drag and drop an image file into the dashed area.</p>
   <%= form_for(@picture, :url => pictures_path) do |f| %>
       <%= f.label :image, "Image:" %>
           <%= link_to("Upload", "#", :class => "upload_button") %>
@@ -13,8 +12,23 @@
         <%= f.submit "Submit picture" %>
         <% if @error %><span class="error"><%= @error %></span><% end %>
   <% end %>
+<canvas id = "myCanvas" width = 1000px height = 1000px>
 
-<a href="<%= pictures_path %>" class="back_link">Back to list</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</canvas>
+<!-- <a href="<%= pictures_path %>" class="back_link">Back to list</a> -->
 
 <div id="info"></div>
 
@@ -49,8 +63,8 @@
         }
       })
       .off("cloudinarydone").on("cloudinarydone", function (e, data) {
-
         image_url_to_frs(data.result.url)
+        image_pubid_to_upload(data.result.public_id, data.result.format)
         $("#picture_bytes").val(data.result.bytes);
         // $(".status").text("");
         // var preview = $(".preview").html('');
@@ -92,6 +106,39 @@
       })
     }
 
+    function rickifier(data, address) {
+      var c=document.getElementById("myCanvas");
+      var ctx=c.getContext("2d");
+      var imageObj1 = new Image();
+      var imageObj2 = new Image();
+      imageObj1.src = address
+      if(data.faces[0].features.eyes===undefined){
+        var leftEyeX = data.faces[0].features.nose.x*.3
+        var leftEyeY = data.faces[0].features.nose.y*.2
+        var rightEyeX = data.faces[0].features.nose.x*2
+        var rightEyeY = data.faces[0].features.nose.y*.2
+        var browWidth = (rightEyeX*.9)-leftEyeX
+      }
+      else{
+        var leftEyeX = data.faces[0].features.eye[0].x
+        var leftEyeY = data.faces[0].features.eye[0].y
+        var rightEyeX = data.faces[0].features.eye[1].x
+        var rightEyeY = data.faces[0].features.eye[1].y
+        var browWidth = (rightEyeX+data.faces[0].features.eyes[1].width)-leftEyeX
+      }
+
+      imageObj1.onload = function() {
+        ctx.drawImage(imageObj1, data.faces[0].x, data.faces[0].y, data.faces[0].width, data.faces[0].height, 0, 0, 1000, 1000);
+        imageObj2.src = "http://res.cloudinary.com/ds1rn0ryl/image/upload/v1473438420/hxk8ckcb54waw8e4tcr6.png";
+        imageObj2.onload = function() {
+          ctx.drawImage(imageObj2, leftEyeX, leftEyeY, browWidth, 100);
+          // ctx.drawImage(imageObj2, 350, 250)
+          var img = c.toDataURL("image/png");
+          $('body').append('<img src="' + img + '"/>');
+          }
+        };
+       }
+
     function image_url_to_frs(address) {
       console.log('frsing image');
       $.ajax({
@@ -100,26 +147,11 @@
         data: {address: address}
       }).done(function(data){
         console.log(data)
+        rickifier(data, address)
       })
     }
 
-    function rickifier(data, address) {
-      var c=document.getElementById("myCanvas");
-      var ctx=c.getContext("2d");
-      var imageObj1 = new Image();
-      var imageObj2 = new Image();
-      imageObj1.src = address
-      imageObj1.onload = function() {
-        ctx.drawImage(imageObj1, 0, 0, 328, 526);
-        imageObj2.src = "http://res.cloudinary.com/ds1rn0ryl/image/upload/v1473361302/bjhqxovkymwplkwqwtgb.png";
-        imageObj2.onload = function() {
-          ctx.drawImage(imageObj2, 15, 85, 300, 300);
-          var img = c.toDataURL("image/png");
-          img.cloudinary_fileupload()
-          // document.write('<img src="' + img + '" width="328" height="526"/>');
-          }
-        };
-       }
+
 
 
 
