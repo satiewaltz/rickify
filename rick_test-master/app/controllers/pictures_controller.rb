@@ -15,14 +15,14 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(url: @url)
-    redirect to: "pictures#index"
+    # redirect_to: "pictures#index"
   end
 
   def upload
     Picture.create(url: "#{params[:address]}.#{params[:format]}")
-    # if(params[:redirtag]=="1")
-    #   redirect_to "/"
-    # end
+    if(params[:redirtag]=="1")
+      redirect_to "/"
+    end
   end
 
   def frs
