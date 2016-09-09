@@ -64,7 +64,7 @@
       })
       .off("cloudinarydone").on("cloudinarydone", function (e, data) {
         image_url_to_frs(data.result.url)
-        image_pubid_to_upload(data.result.public_id, data.result.format)
+        image_pubid_to_upload(data.result.public_id, data.result.format, 0)
         $("#picture_bytes").val(data.result.bytes);
         // $(".status").text("");
         // var preview = $(".preview").html('');
@@ -94,12 +94,12 @@
 
     // Worse comes to worse, stick an ajax call here to the create path, include data
 
-    function image_pubid_to_upload(address, format) {
+    function image_pubid_to_upload(address, format, redirtag) {
       console.log('uploading image');
       $.ajax({
         "url": "/pictures/upload",
         "method": "post",
-        "data": { "address": address, "format": format},
+        "data": { "address": address, "format": format, "redirtag": redirtag},
         "success": function(){
           console.log("woo")
         }
@@ -111,6 +111,8 @@
       var ctx=c.getContext("2d");
       var imageObj1 = new Image();
       var imageObj2 = new Image();
+      imageObj1.setAttribute('crossOrigin', 'anonymous');
+      imageObj2.setAttribute('crossOrigin', 'anonymous');
       imageObj1.src = address
       if(data.faces[0].features.eyes===undefined){
         var leftEyeX = data.faces[0].features.nose.x*.3
@@ -133,20 +135,10 @@
         imageObj2.onload = function() {
           ctx.drawImage(imageObj2, leftEyeX, leftEyeY, browWidth, 100);
           // ctx.drawImage(imageObj2, 350, 250)
-          $("#myCanvas").addClass('cloudinary-fileupload')
-          $("#myCanvas").cloudinary_fileupload({
-            start: function (e) {
-              $(".status").text("Starting upload...");
-            },
-            progress: function (e, data) {
-              $(".status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
-            },
-            fail: function (e, data) {
-              $(".status").text("Upload failed");
-            }
-          })
-          // var img = c.toDataURL("image/png");
-          // $('body').append('<img src="' + img + '"/>');
+          var img = c.toDataURL("image/png");
+          $(".cloudinary-fileupload").cloudinary_upload_url(img).off("cloudinarydone").on("cloudinarydone", function(e, data){
+            image_pubid_to_upload(data.result.public_id, data.result.format, 1)
+          });
           }
         };
        }
