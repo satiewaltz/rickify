@@ -12,7 +12,7 @@
         <%= f.submit "Submit picture" %>
         <% if @error %><span class="error"><%= @error %></span><% end %>
   <% end %>
-<canvas id = "myCanvas" width = 1000px height = 1000px>
+<canvas id = "myCanvas">
 
 
 
@@ -109,31 +109,42 @@
     function rickifier(data, address) {
       var c=document.getElementById("myCanvas");
       var ctx=c.getContext("2d");
+      $("#myCanvas").attr('width', data.image.width)
+      $("#myCanvas").attr('height', data.image.height)
       var imageObj1 = new Image();
       var imageObj2 = new Image();
       imageObj1.setAttribute('crossOrigin', 'anonymous');
       imageObj2.setAttribute('crossOrigin', 'anonymous');
       imageObj1.src = address
-      if(data.faces[0].features.eyes[0]===undefined){
-        var leftEyeX = data.faces[0].features.nose.x*.3
-        var leftEyeY = data.faces[0].features.nose.y*.2
+      //add check for incorrect image profile
+      if(data.faces[0].features.eyes===undefined){
+        var leftEyeX = data.faces[0].features.nose.x*.5
+        var leftEyeY = data.faces[0].features.nose.y*.6
         var rightEyeX = data.faces[0].features.nose.x*2
         var rightEyeY = data.faces[0].features.nose.y*.2
-        var browWidth = (rightEyeX*.9)-leftEyeX
+        var browWidth = (rightEyeX*1.2)-leftEyeX
+        var browHeight = data.faces[0].features.mouth.height*.7
       }
       else{
-        var leftEyeX = data.faces[0].features.eyes[1].x
-        var leftEyeY = data.faces[0].features.eyes[1].y
+        var leftEyeX = data.faces[0].features.eyes[1].x*.95
+        var leftEyeY = data.faces[0].features.eyes[1].y-data.faces[0].features.eyes[1].height*.90
         var rightEyeX = data.faces[0].features.eyes[0].x
-        var rightEyeY = data.faces[0].features.eyes[0].y
-        var browWidth = (rightEyeX+data.faces[0].features.eyes[0].width)
+        var rightEyeY = data.faces[0].features.eyes[0].y-data.faces[0].features.eyes[0].height*.90
+        //add similar check for y coordinates
+        if(leftEyeX > rightEyeX){
+          leftEyeX = data.faces[0].features.eyes[0].x
+          rightEyeX = data.faces[0].features.eyes[1].x
+        }
+        var browWidth = (rightEyeX+data.faces[0].features.eyes[0].width)-leftEyeX*.85
+        var browHeight = data.faces[0].features.eyes[0].height
       }
 
       imageObj1.onload = function() {
-        ctx.drawImage(imageObj1, data.faces[0].x, data.faces[0].y, data.faces[0].width, data.faces[0].height, 0, 0, 1000, 1000);
+        ctx.drawImage(imageObj1, 0, 0);
         imageObj2.src = "http://res.cloudinary.com/ds1rn0ryl/image/upload/v1473438420/hxk8ckcb54waw8e4tcr6.png";
         imageObj2.onload = function() {
-          ctx.drawImage(imageObj2, leftEyeX, leftEyeY, browWidth, 100);
+          //rotate image before drawing object 2, counter-rotate after
+          ctx.drawImage(imageObj2, leftEyeX, leftEyeY, browWidth, browHeight);
           // ctx.drawImage(imageObj2, 350, 250)
           var img = c.toDataURL("image/png");
           $(".cloudinary-fileupload").cloudinary_upload_url(img).off("cloudinarydone").on("cloudinarydone", function(e, data){
