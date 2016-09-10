@@ -1,18 +1,32 @@
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
+<nav>
+  <div class="nav-wrapper light-blue darken-2">
+    <a href="" class="brand-logo">RICKIFY</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="">User Archive</a></li>
+      <li><a href="">Global Gallery</a></li>
+    </ul>
 
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
-<h1>WRONG ONE</h1>
+  </div>
+</nav>
+
+<body>
+  <h1>BLACK SQUAD</h1>
+  <h1>BLACK SQUAD</h1>
+
+  <h1>BLACK SQUAD</h1>
+  <h1>BLACK SQUAD</h1>
+  <h1>BLACK SQUAD</h1>
 
 <% @pictures.each do |picture| %>
 <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
 <% end %>
+
+</body>
+
 <canvas id = "myCanvas">
 
 </canvas>
+
 <script>
 
 var c=document.getElementById("myCanvas");
@@ -29,6 +43,8 @@ imageObj1.onload = function() {
 
       // document.write('<img src="' + img + '" width="328" height="526"/>');
    }
+
+
 };
 
 </script>

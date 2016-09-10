@@ -5,5 +5,13 @@
 
 $font-stack: Arial, sans-serif;
 $primary-color: blue;
+$body-color:  deep-purple lighten-3;
 
 h1 {color:$primary-color; font:$font-stack;}
+
+ body {
+     background:$body-color;
+  }
+
+
+
