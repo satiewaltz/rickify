@@ -1,12 +1,13 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   MASHAPE_KEY = ENV['MASHAPE_KEY']
-
 
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all
+    userid = current_user
+    @pictures = Picture.where("user_id = ?", userid)
   end
 
   # GET /pictures/1
@@ -17,7 +18,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   def new
     # @picture = Picture.new
-    @picture = Picture.new(params[:picture])
+    @picture = current_user.pictures.build(params[:picture])
     if params[:image_id].present?
       preloaded = Cloudinary::PreloadedFile.new(params[:image_id])
       raise "Invalid upload signature" if !preloaded.valid?
@@ -32,7 +33,7 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
 
     respond_to do |format|
       if @picture.save
@@ -46,7 +47,7 @@ class PicturesController < ApplicationController
   end
 
   def upload
-    Picture.create(url: "#{params[:address]}.#{params[:format]}")
+    Picture.create(url: "#{params[:address]}.#{params[:format]}", user_id: current_user.id)
     if(params[:redirtag]=="1")
       redirect_to "/"
     end
