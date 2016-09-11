@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-$font-stack: Impact;
-$primary-color: #f06292;
+$font-stack: Comic Sans MS, cursive, sans-serif;
+$primary-color: pink;
 // $body-color: deep-purple lighten-3;
 
 h1 {color:$primary-color; font-family:$font-stack;}
@@ -13,7 +13,10 @@ h1 {color:$primary-color; font-family:$font-stack;}
       display: flex;
       min-height: 100vh;
       flex-direction: column;
-      background: #80cbc4
+      background: #80cbc4;
+      font-family:$font-stack;
+
+
     }
 
     main {
