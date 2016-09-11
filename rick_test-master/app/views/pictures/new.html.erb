@@ -105,7 +105,30 @@
         }
       })
     }
+    /////////////////
+    // ANGLE STUFF HAPPENS
 
+    // Below calculates approperaite angle between two points
+    var theta;
+    function angle(cx, cy, ex, ey) {
+      var dy = ey - cy;
+      var dx = ex - cx;
+      theta = Math.atan2(dy, dx); // range (-PI, PI]
+      theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
+      theta = Math.round(theta)
+    }
+    function angle360(cx, cy, ex, ey) {
+      angle(cx, cy, ex, ey); // range (-180, 180]
+      console.log(theta, "before iffy");
+      if (theta < 0) {
+        theta = 90 + theta;
+      } // range [0, 90)
+      theta = theta - 90
+      console.log(theta);
+    }
+    ////////////
+
+    // Draw image and get coords from json
     function rickifier(data, address) {
       var c=document.getElementById("myCanvas");
       var ctx=c.getContext("2d");
@@ -117,34 +140,85 @@
       imageObj2.setAttribute('crossOrigin', 'anonymous');
       imageObj1.src = address
       //add check for incorrect image profile
-      if(data.faces[0].features.eyes===undefined){
+      if (data.faces[0].features.eyes===undefined){
         var leftEyeX = data.faces[0].features.nose.x*.5
         var leftEyeY = data.faces[0].features.nose.y*.6
         var rightEyeX = data.faces[0].features.nose.x*2
         var rightEyeY = data.faces[0].features.nose.y*.2
         var browWidth = (rightEyeX*1.2)-leftEyeX
         var browHeight = data.faces[0].features.mouth.height*.7
-      }
-      else{
+        angle360(leftEyeX, leftEyeY, rightEyeX, rightEyeY);
+      } else {
         var leftEyeX = data.faces[0].features.eyes[1].x*.95
         var leftEyeY = data.faces[0].features.eyes[1].y-data.faces[0].features.eyes[1].height*.90
         var rightEyeX = data.faces[0].features.eyes[0].x
         var rightEyeY = data.faces[0].features.eyes[0].y-data.faces[0].features.eyes[0].height*.90
         //add similar check for y coordinates
-        if(leftEyeX > rightEyeX){
+        if (leftEyeX > rightEyeX) {
           leftEyeX = data.faces[0].features.eyes[0].x
           rightEyeX = data.faces[0].features.eyes[1].x
         }
         var browWidth = (rightEyeX+data.faces[0].features.eyes[0].width)-leftEyeX*.85
         var browHeight = data.faces[0].features.eyes[0].height
+        angle360(leftEyeX, leftEyeY, rightEyeX, rightEyeY);
       }
 
       imageObj1.onload = function() {
+        var sizeWidth = ctx.canvas.clientWidth;
+        var sizeHeight = ctx.canvas.clientHeight;
+
         ctx.drawImage(imageObj1, 0, 0);
+
         imageObj2.src = "http://res.cloudinary.com/ds1rn0ryl/image/upload/v1473438420/hxk8ckcb54waw8e4tcr6.png";
         imageObj2.onload = function() {
           //rotate image before drawing object 2, counter-rotate after
+
+          // Move origin point to center of eyebrow
+          // save the context's co-ordinate system before
+          // we screw with it
+          ctx.save();
+
+          // move the origin to 50, 35
+
+          // now move across and down half the
+          // width and height of the image (which is 128 x 128)
+
+          // rotate around this point
+
+          ctx.translate((leftEyeX + browWidth / 2), (leftEyeY + browHeight / 2 ));
+          ctx.rotate(30 * Math.PI/180)
+
           ctx.drawImage(imageObj2, leftEyeX, leftEyeY, browWidth, browHeight);
+          // then draw the image back and up
+
+          // and restore the co-ordinate system to its default
+          // top left origin with no rotation
+          ctx.restore();
+
+
+ctx.rotate(30 * Math.PI/180)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          console.log(leftEyeY, "leftEyeY");
+          console.log(browWidth, "browWidth");
+          // Rotate it!
+          // Move origin point back to corner;
+
+
+
           // ctx.drawImage(imageObj2, 350, 250)
           var img = c.toDataURL("image/png");
           $(".cloudinary-fileupload").cloudinary_upload_url(img).off("cloudinarydone").on("cloudinarydone", function(e, data){
@@ -165,10 +239,6 @@
         rickifier(data, address)
       })
     }
-
-
-
-
 
     // function view_upload_details(upload) {
     //   // Build an html table out of the upload object
