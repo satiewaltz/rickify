@@ -1,24 +1,24 @@
-#Project Scope
-    
-    Our pitch is a focused vision for a Rails based CRUD app that will appeal to a niche market and hopefully scale to a global audience. The concept we would like to move forward with will initially be titled RICKIFY with the possibility of a MEMEIFY rebrand if additional features develop past prototype phase. 
+# README
 
-    The MVP for RICKIFY is to have USERS register, sign-in, upload their photos, create a new image by adding on a "unibrow" image, then have those pieces added under their user account. Technologies we are exploring to put this into action are facial-recognition API's, a Facebook API that will automatically upload FB profile pictures upon signing in, IMGUR API, amongst other options we are still looking into.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-[Appflow Whiteboard](http://i.imgur.com/xLiqP1H.jpg)
+Things you may want to cover:
 
-[Pseudocode WB](http://i.imgur.com/vkDMing.jpg)
+* Ruby version
 
-[DB WB](http://i.imgur.com/7aykL0W.jpg)
+* System dependencies
 
-[Pseudocode Flow WB](http://i.imgur.com/hNPML5C.jpg )
+* Configuration
 
-[Day 1 research assignments](http://i.imgur.com/Pts9qdU.jpg )
+* Database creation
 
-[Pseudocode Flow WB 2](http://i.imgur.com/qNqxWFK.jpg)
+* Database initialization
 
-[Day 1 Timing Flow](http://i.imgur.com/JOoLWtk.jpg)
+* How to run the test suite
 
-[Views Wireframing](http://i.imgur.com/MO1180p.jpg)
+* Services (job queues, cache servers, search engines, etc.)
 
+* Deployment instructions
 
-
+* ...
