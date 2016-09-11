@@ -77,17 +77,12 @@ class PicturesController < ApplicationController
   def frs
     require "httparty"
     db_url = params[:address]
-    response = HTTParty.post "https://apicloud-facerect.p.mashape.com/process-file.json",
+    response = HTTParty.get "https://apicloud-facerect.p.mashape.com/process-url.json?features=true&url=#{db_url}",
     headers:{
       "X-Mashape-Key" => MASHAPE_KEY,
       "Accept" => "text/plain"
-    },
-    parameters:{
-      "features" => true,
-      "image" => File.new(db_url)
     }
     @coords = response.parsed_response
-    puts @coords
     render :json => @coords
   end
 

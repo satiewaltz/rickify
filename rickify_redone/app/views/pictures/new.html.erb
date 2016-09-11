@@ -41,8 +41,8 @@
     // You can further customize the configuration using .fileupload method
     // as we do below.
 
-    image_url_to_frs(data.result.bytes)
-    $('input[type=file]').on('change', fileUpload);
+    // image_url_to_frs(data.result.bytes)
+    // $('input[type=file]').on('change', fileUpload);
 
 
 
@@ -66,11 +66,9 @@
         }
       })
       .off("cloudinarydone").on("cloudinarydone", function (e, data) {
-        console.log(data.result, "data.result")
-        console.log(data, "data")
-
-        image_pubid_to_upload(data.result.public_id, data.result.format, 0)
-        $("#picture_bytes").val(data.result.bytes);
+        image_url_to_frs(data.result.url)
+        // image_pubid_to_upload(data.result.public_id, data.result.format, 0)
+        // $("#picture_bytes").val(data.result.bytes);
 
       });
     });
@@ -87,10 +85,6 @@
         rickifier(data, address)
       })
     }
-
-
-
-
 
 
     // Worse comes to worse, stick an ajax call here to the create path, include data
