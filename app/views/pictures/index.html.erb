@@ -1,30 +1,69 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pictures</h1>
+<% if user_signed_in? %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pictures.each do |picture| %>
+  <h1>Pictures</h1>
+  <table>
+    <thead>
       <tr>
-        <td><%= picture.url %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <% if picture.user_id == current_user.id %>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <th></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <%= link_to 'Make a new ricked pic!', new_picture_path %>
+    <tbody>
+      <% @pictures.each do |picture| %>
+        <tr>
+          <td><%= link_to cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80), picture %></td>
+          <td><%= link_to 'Show', picture %></td>
+          <% if picture.user_id == current_user.id %>
+            <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+            <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
-        <%= link_to cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80), picture %>
+      <% end %>
+    </tbody>
+  </table>
 
+<% else %>
+
+  <main>
+    <center>
+    <h1>RICKIFY</h1>
+    <% @pictures.each do |picture| %>
+      <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
     <% end %>
-  </tbody>
-</table>
-<br>
-
-<%= link_to 'New Picture', new_picture_path %>
+    <h5 class="indigo-text">Please, login into your account.</h5>
+    <div class="container">
+      <div class="formwrap z-depth-1 grey lighten-4 row">
+      <%= form_for("user", :url => user_session_path) do |f| %>
+        <div class='row'>
+          <div class='input-field col s12'>
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='input-field col s12'>
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+        <center>
+          <div class='row'>
+            <div class="actions">
+              <%= f.submit "Login"%>
+              <%= link_to "Sign Up", new_user_registration_path %>
+            </div>
+          </div>
+        </center>
+      <% end %>
+      </div>
+      </div>
+    </center>
+  </main>
+<% end %>

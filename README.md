@@ -18,6 +18,11 @@ ___
 - Cloudinary
 - dotenv
 
+### APIs
+
+- Facerect
+- Cloudinary
+
 ___
 
 [Appflow Whiteboard](http://i.imgur.com/xLiqP1H.jpg)

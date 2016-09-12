@@ -4,3 +4,24 @@
 
 <%= link_to 'Show', @picture %> |
 <%= link_to 'Back', pictures_path %>
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%"%%%%%%%%%%%%%%%%" -->
+
+
+<h1>Update picture</h1>
+  <%= form_for(@picture, :url => pictures_path) do |f| %>
+    <%= f.label :image, "Upload:" %>
+    <% if @unsigned %>
+      <%= f.cl_unsigned_image_upload(:image_id, @preset_name) %>
+    <% else %>
+      <%= f.cl_image_upload(:image_id, :return_delete_token=>true) %>
+    <% end %>
+    <% if @error %><span class="error"><%= @error %></span><% end %>
+  <% end %>
+<p class="status">Ready to upload!</p>
+<%= link_to 'Back', pictures_path %>
+<canvas id = "myCanvas"></canvas>
+
+<!-- Configure Cloudinary jQuery plugin -->
+<%= cloudinary_js_config %>
