@@ -1,5 +1,4 @@
 # Rickify!
-___
 
 ### Introduction
     
