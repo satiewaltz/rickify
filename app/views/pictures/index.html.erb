@@ -15,12 +15,12 @@
       <tr>
         <td><%= picture.url %></td>
         <td><%= link_to 'Show', picture %></td>
-<!--         <% if picture.user_id == current_user %>
- -->        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <% if picture.user_id == current_user.id %>
+        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<!--         <% end %>
- -->      </tr>
-        <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
+        <% end %>
+        </tr>
+        <%= link_to cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80), picture %>
 
     <% end %>
   </tbody>
