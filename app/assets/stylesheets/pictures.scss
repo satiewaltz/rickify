@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 * {
-  color: white;
+  color: black;
 }
 $font-stack: Comic Sans MS, cursive, sans-serif;
 $primary-color: pink;
@@ -57,4 +57,12 @@ main {
   padding: 32px 48px 0px 48px;
   border: 5px solid black;
   border-radius: 30px 30px 30px 30px;
+}
+
+.actions {
+  margin: 10%;
+}
+
+.indigo-text {
+  color: white;
 }
