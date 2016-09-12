@@ -14,7 +14,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background: #80cbc4;
+  background: $primary-color;
   font-family:$font-stack;
   margin: 0 auto;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)
@@ -33,6 +33,7 @@ body {
 
 main {
   flex: 1 0 auto;
+  color: $primary-color;
 }
 
 .input-field input[type=date]:focus + label,
@@ -51,7 +52,7 @@ main {
 }
 
 .formwrap {
-  background: white;
+  background: $primary-color;
   display: inline-block;
   padding: 32px 48px 0px 48px;
   border: 5px solid black;
