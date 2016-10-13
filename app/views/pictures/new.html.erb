@@ -129,12 +129,12 @@ if (data.faces[0].features.eyes===undefined) {
   // Credit: http://stackoverflow.com/questions/32068759/javascript-combine-images
   imageObj1.onload = function() {
     ctx.drawImage(imageObj1, 0, 0);
-    imageObj2.src = "http://res.cloudinary.com/ds1rn0ryl/image/upload/v1473438420/hxk8ckcb54waw8e4tcr6.png";
+    imageObj2.src = "http://i.imgur.com/q3jlx5w.png";
     imageObj2.onload = function() {
     ctx.translate(leftEyeX, leftEyeY)
           ctx.rotate(theta*Math.PI / 180)
           if(leftEyeY < rightEyeY){
-          ctx.drawImage(imageObj2, 0-browWidth*.1, 0-browHeight, browWidth, browHeight);
+          ctx.drawImage(imageObj2, 0-browWidth*.1, 0-browHeight, browWidth, 100);
           }
           else if(leftEyeY > rightEyeY){
           ctx.drawImage(imageObj2, 0-browWidth*.1, 0+browHeight*.5, browWidth, browHeight);

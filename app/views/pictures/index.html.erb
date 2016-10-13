@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-
+<main>
+<!-- <p id="notice"><%= notice %></p>
+ -->
 <% if user_signed_in? %>
-
   <h1>Pictures</h1>
   <table>
     <thead>
@@ -26,44 +26,47 @@
   </table>
 
 <% else %>
+<%= render partial: 'devise/sessions/new' %>
 
-  <main>
-    <center>
-    <img HEIGHT="60%" WIDTH="60%" src ="http://i.imgur.com/do2SmLg.png">
-    <% @pictures.each do |picture| %>
-      <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
-    <% end %>
-    <h5 class="indigo-text">Please, login into your account.</h5>
     <div class="container">
+      <div class="row">
+        <!-- <img class="logo" src ="https://cdn.pbrd.co/images/dLZfcnEZi.png"> -->
+        <h1 class="logo2">Memeify!</h1>
+        <% @pictures.each do |picture| %>
+          <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
+        <% end %>
+        <h5 class="indigo-text">Please, login into your account.</h5>
+      </div>
       <div class="formwrap z-depth-1 grey lighten-4 row">
-      <%= form_for("user", :url => user_session_path) do |f| %>
+        <%= form_for("user", :url => user_session_path) do |f| %>
         <div class='row'>
+          <%#= f.label :email %>
           <div class='input-field col s12'>
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true %>
+            <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-field" %>
           </div>
         </div>
         <div class='row'>
+          <%#= f.label :password %>
           <div class='input-field col s12'>
-            <%= f.label :password %>
-            <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-field" %>
           </div>
         </div>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-        <center>
-          <div class='row'>
-            <div class="actions">
-              <%= f.submit "Login"%>
-              <%= link_to "Sign Up", new_user_registration_path %>
-            </div>
+
+        <div class='row'>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
           </div>
-        </center>
-      <% end %>
-      </div>
-      </div>
-    </center>
-  </main>
-<% end %>
+        </div>
+
+        <div class='row'>
+          <div class="actions">
+            <%= f.button 'Login', class: "login action-button shadow animate blue" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "action-button shadow animate red" %>
+          </div>
+        </div>
+        <% end %> <!-- End of form erb -->
+      </div>  <!-- End of  " formwrap " row -->
+    </div> <!-- End of container -->
+  <% end %>
+</main> <!-- End of main -->
