@@ -1,0 +1,69 @@
+// Place all the styles related to the Pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Import responive type mixin
+@import "resptype";
+@import "checkbox";
+
+* {
+  color: black;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+$font-stack: Helvetica, sans-serif;
+$header-stack: pacifico, cursive;
+
+$primary-color: #f97f36;
+// #ff7624;
+// $body-color: deep-purple lighten-3;
+
+h1, h2 {color:$primary-color; font-family:$header-stack;}
+
+h2 {
+  @include responsive-font(13.5vw, 45px, 60px, 50px);
+  margin: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: $primary-color;
+  font-family:$font-stack;
+  margin: 0;
+  background: url("http://i.imgur.com/DBmzq10.png");
+  background-size: cover;
+  background-repeat-y: no-repeat;
+}
+
+main {
+  flex: 1 0 auto;
+  text-align: center;
+  color: $primary-color;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-field input[type=date]:focus + label,
+.input-field input[type=text]:focus + label,
+.input-field input[type=email]:focus + label,
+.input-field input[type=password]:focus + label {
+  color: #e91e63;
+}
+
+// Logo! /////////
+
+.logo {
+  @include responsive-font(16.5vw, 65px, 100px, 70px);
+  margin: 0;
+  transform: rotate(-10deg);
+}
+
+

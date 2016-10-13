@@ -1,0 +1,50 @@
+@media (max-width: 600px){
+  .red {
+    margin-top: 20px;
+  }
+
+  .indigo-text {
+    margin-bottom: 0;
+  }
+
+  .container {
+    background: rgba(251, 246, 247, 0.93);
+  }
+
+  .logo2 {
+    margin-top: 20px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .action-button {
+    max-width: 100%;
+  }
+
+  .formwrap {
+    background: none;
+    border: none;
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .pwd {
+    font-size: 18px;
+  }
+  // Can't hover in touch screen devices
+  .login-wrap::after, .action-button::after {
+    background: none;
+  }
+}
+
+@media (max-width: 400px){
+  .form-field {
+      padding: 30px 22px;
+      font-size: 20px;
+  }
+  .pwd {
+    font-size: 16px;
+  }
+}

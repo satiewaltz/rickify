@@ -1,0 +1,146 @@
+.login {
+  outline: none;
+}
+
+.indigo-text {
+  text-align: center;
+  color: #9a9a9a;
+}
+
+// Container for the form
+.formwrap {
+  box-sizing: border-box;
+  font-family: helvetica;
+  background: #fbf6f7;
+  display: inline-block;
+  padding: 30px;
+  border: 5px solid #eee8e9;
+  border-style: double;
+  border-radius: 25px;
+  text-align: left;
+  width: 100%;
+  max-width: 500px;
+}
+
+// Styling for the actual form
+.form-field {
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.2);
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 30px;
+  width: 100%;
+  font-size: 26px;
+  border-style: none;
+  padding: 39px 22px;
+  box-shadow: inset 0px 0px 11px rgba(0,0,0,0.15);
+  transition: box-shadow 200ms;
+}
+
+.form-field:focus {
+  box-shadow: inset 0px 0px 15px rgba(0,0,0,0.25);
+}
+
+
+////////////////////
+
+.animate {
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+
+// Buttons By Ottis Kelleghan
+// http://codepen.io/cheeriottis/pen/inluv
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field {
+  display: inline-block;
+  margin-bottom: 14px;
+  // padding-left: 23px;
+  label {
+    font-size: 18px;
+    vertical-align: super;
+    color: #9c9798;
+    border-left: 1px solid #9c9798;
+    padding-left: 9px;
+    margin-left: 6px;
+    text-transform: capitalize;
+  }
+}
+
+.action-button {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  font-family: 'Pacifico', cursive;
+  font-size: 25px;
+  color: #FFF;
+  max-width: 200px;
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+}
+
+.action-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  background: #fff;
+  transform: rotateZ(60deg) translate(-5em, 7.5em);
+
+}
+
+.action-button:hover::after {
+  animation: sheen 1s forwards;
+  animation-timing-function:  ease-in-out;
+
+}
+
+@keyframes sheen {
+  100% {
+    transform: rotateZ(60deg) translate(1em, -9em);
+  }
+}
+
+.blue {
+  background-color: #3498DB;
+  border: none;
+  border-bottom: 5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  cursor: pointer;
+}
+
+.blue2 {
+  padding: 4px;
+}
+
+.red {
+  border: none;
+  padding-bottom: 5px;
+  background-color: #E74C3C;
+  border-bottom: 5px solid #BD3E31;
+  text-shadow: 0px -2px #BD3E31;
+  cursor: pointer;
+}
+
+.action-button:active {
+  transform: translate(0px,5px);
+  border-bottom: 1px solid;
+}
+
+
+.pwd {
+  font-size: 20px;
+}
+
+
