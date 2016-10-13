@@ -99,6 +99,7 @@ main {
 }
 
 .indigo-text {
+  text-align: center;
   color: #9a9a9a;
 }
 
@@ -134,10 +135,14 @@ main {
 
 .actions {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .field {
   display: inline-block;
+  margin-bottom: 20px;
   // padding-left: 23px;
   label {
     font-size: 18px;
@@ -154,8 +159,6 @@ main {
   width: 100%;
   position: relative;
   text-align: center;
-  margin: auto;
-  margin-top: 20px;
   border-radius: 10px;
   font-family: 'Pacifico', cursive;
   font-size: 25px;
@@ -191,7 +194,6 @@ main {
 }
 
 .blue {
-  margin-left: 0px;
   background-color: #3498DB;
   border: none;
   border-bottom: 5px solid #2980B9;
@@ -199,12 +201,17 @@ main {
   cursor: pointer;
 }
 
+.blue2 {
+  padding: 4px;
+}
+
 .red {
+  border: none;
   padding-bottom: 5px;
-  margin-right: 0px;
   background-color: #E74C3C;
   border-bottom: 5px solid #BD3E31;
   text-shadow: 0px -2px #BD3E31;
+  cursor: pointer;
 }
 
 .action-button:active {
@@ -214,6 +221,10 @@ main {
 
 
 @media (max-width: 600px){
+  .red {
+    margin-top: 20px;
+  }
+
   .indigo-text {
     margin-bottom: 0;
   }

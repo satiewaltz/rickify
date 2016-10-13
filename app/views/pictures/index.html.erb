@@ -35,7 +35,7 @@
         <% @pictures.each do |picture| %>
           <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
         <% end %>
-        <h5 class="indigo-text">Please, login into your account.</h5>
+        <h5 class="indigo-text">Welcome! Sign up, or login to start memeifying!</h5>
       </div>
       <div class="formwrap z-depth-1 grey lighten-4 row">
         <%= form_for("user", :url => user_session_path) do |f| %>
