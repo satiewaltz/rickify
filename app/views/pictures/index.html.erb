@@ -31,7 +31,7 @@
     <div class="container">
       <div class="row">
         <!-- <img class="logo" src ="https://cdn.pbrd.co/images/dLZfcnEZi.png"> -->
-        <h1 class="logo2">Memeify!</h1>
+        <h1 class="logo">Memeify!</h1>
         <% @pictures.each do |picture| %>
           <%= cl_image_tag(picture.url, :crop => :fill, :width => 120, :height => 80) %>
         <% end %>
