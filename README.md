@@ -23,6 +23,13 @@ ___
 - Facerect
 - Cloudinary
 
+
+### UI Components Used
+
+- Responsive Typography SCSS Mixin - Eduardo Boucas 
+- Buttons By Ottis Kelleghan - http://codepen.io/cheeriottis/pen/inluv
+- Columns By Kushagra Agarwal http://cssdeck.com/labs/css-only-pinterest-style-columns-layout
+- Checkbox by Joshua Hibbert https://codepen.io/joshnh/pen/lCreL
 ___
 
 [Appflow Whiteboard](http://i.imgur.com/xLiqP1H.jpg)
