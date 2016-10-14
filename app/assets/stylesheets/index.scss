@@ -1,0 +1,14 @@
+@import "resptype";
+
+.pictureHead {
+  @include responsive-font(5vw, 29px, 40px, 30px);
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+}
+
+hr {
+    width: 70vw;
+}

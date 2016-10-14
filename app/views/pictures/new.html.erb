@@ -1,6 +1,7 @@
 <h1>New picture</h1>
   <%= form_for(@picture, :url => pictures_path) do |f| %>
     <%= f.label :image, "Upload:" %>
+    <br>
     <% if @unsigned %>
       <%= f.cl_unsigned_image_upload(:image_id, @preset_name) %>
     <% else %>

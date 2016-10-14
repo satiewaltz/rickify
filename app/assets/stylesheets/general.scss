@@ -57,6 +57,7 @@ main {
 
 .logo {
   @include responsive-font(16.5vw, 65px, 100px, 70px);
+  text-align: center;
   transform: rotate(-10deg);
   max-width: 700px;
   margin: auto;
@@ -73,7 +74,6 @@ main {
   letter-spacing: 2px;
 }
 
-.pictureHead {
-  @include responsive-font(13.5vw, 45px, 60px, 50px);
-  margin: 0;
+.status {
+  margin-top: 10px;
 }
