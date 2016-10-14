@@ -18,12 +18,7 @@ $primary-color: #f97f36;
 // #ff7624;
 // $body-color: deep-purple lighten-3;
 
-h1, h2 {color:$primary-color; font-family:$header-stack;}
-
-h2 {
-  @include responsive-font(13.5vw, 45px, 60px, 50px);
-  margin: 0;
-}
+h1 {color:$primary-color; font-family:$header-stack;}
 
 body {
   display: flex;
@@ -62,8 +57,23 @@ main {
 
 .logo {
   @include responsive-font(16.5vw, 65px, 100px, 70px);
-  margin: 0;
   transform: rotate(-10deg);
+  max-width: 700px;
+  margin: auto;
+  overflow: hidden;
 }
 
+.indigo-text {
+   @include responsive-font(3vw, 10px, 16px, 16px);
+  margin-top: 5px;
+  text-align: center;
+  color: #9a9a9a;
+  font-family: pacifico, cursive;
+  font-kerning: wide;
+  letter-spacing: 2px;
+}
 
+.pictureHead {
+  @include responsive-font(13.5vw, 45px, 60px, 50px);
+  margin: 0;
+}

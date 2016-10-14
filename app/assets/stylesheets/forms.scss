@@ -2,11 +2,6 @@
   outline: none;
 }
 
-.indigo-text {
-  text-align: center;
-  color: #9a9a9a;
-}
-
 // Container for the form
 .formwrap {
   box-sizing: border-box;
@@ -128,7 +123,8 @@
 .red {
   border: none;
   padding-bottom: 5px;
-  background-color: #E74C3C;
+  background-color: #eb6565;
+  // #E74C3C;
   border-bottom: 5px solid #BD3E31;
   text-shadow: 0px -2px #BD3E31;
   cursor: pointer;
@@ -139,9 +135,6 @@
   border-bottom: 1px solid;
 }
 
-
 .pwd {
   font-size: 20px;
 }
-
-
