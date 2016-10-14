@@ -1,5 +1,6 @@
-# Rickify!
+![Memeify logo](http://i.imgur.com/YUF0Ivo.png?1)
 
+---
 ### Introduction
     
 Our pitch is a focused vision for a Rails based CRUD app that will appeal to a niche market and hopefully scale to a global audience. The concept we would like to move forward with will initially be titled RICKIFY with the possibility of a MEMEIFY rebrand if additional features develop past prototype phase. 
